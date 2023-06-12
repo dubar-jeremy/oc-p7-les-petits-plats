@@ -118,9 +118,34 @@ main {
 
 /* cards */
 
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body-ingredients {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
 .recipes-img {
   max-height: 280px;
-  /* width: auto; */
   object-fit: cover;
 }
 
@@ -162,6 +187,10 @@ main {
 .card-recipe,
 .card-ingredients {
   color: #7a7a7a;
+}
+
+.totototototo {
+  flex: 3;
 }
 /* media query for screen < 768px */
 @media (max-width: 1250px) {

@@ -90,6 +90,7 @@
                     type="text"
                     class="filter-search-form form-control border-0"
                     placeholder="Search"
+                    id="ingredients-search"
                   />
                   <div class="input-group-append border-0">
                     <button class="btn ms-n5" type="button">
@@ -139,6 +140,7 @@
                     type="text"
                     class="filter-search-form form-control border-0"
                     placeholder="Search"
+                    id="appareils-search"
                   />
                   <div class="input-group-append border-0">
                     <button class="btn ms-n5" type="button">
@@ -188,6 +190,7 @@
                     type="text"
                     class="filter-search-form form-control border-0"
                     placeholder="Search"
+                    id="ustentiles-search"
                   />
                   <div class="input-group-append border-0">
                     <button class="btn ms-n5" type="button">
@@ -222,8 +225,9 @@
         </div>
       </div>
       <div class="container p-3 mt-3">
-        <div class="row gx-5 gy-5">
-          <div class="col-sm-6 col-md-4">
+        <div class="gx-5 gy-5 cards">
+          <!-- CARD -->
+          <!-- <div>
             <div class="card">
               <img
                 src="./public/assets/recipes/Recette01.jpg"
@@ -237,203 +241,45 @@
                   >
                 </div>
               </div>
-
               <div class="card-body">
-                <h5 class="card-title mt-2 mb-4">Limonade de Coco</h5>
-                <p class="card-text card-recipe">RECETTE</p>
-                <p class="card-text">
-                  Mettre les glaçons à votre goût dans le blender, Ajouter le
-                  lait la crème de coco, le jus de 2 citrons et le sucre
-                  ensemble. Mixer jusqu'à obtenir la consistance désirée.
-                </p>
-                <p class="card-text card-ingredients">INGREDIENTS</p>
-                <div class="row gx-5 gy-2">
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
+                <h5 class="card-title mt-2 mb-4">
+                  Smoothie tropical tropical tropical tropical
+                </h5>
+                <div>
+                  <p class="card-text card-recipe">RECETTE</p>
+                  <p class="card-text">
+                    Découper les fruits. Le passer au blender jusqu'à obtenir
+                    une texture Découper les fruits. Le passer au blender
+                    jusqu'à obtenir une texture liquide. Mettre au frais. Servir
+                    Découper les fruits. Le passer au blender jusqu'à obtenir
+                    une texture liquide. Mettre au frais. Servir Découper les
+                    fruits. Le . Mettre au frais. Servir
+                  </p>
+                </div>
+                <div class="card-body-ingredients">
+                  <p class="card-text card-ingredients">INGREDIENTS</p>
+                  <div class="row gx-5 gy-2">
+                    <div class="col-6 card-line-height">
+                      <p class="title-ingredient">Bananes</p>
+                      <p class="amount-ingredient">2</p>
+                    </div>
+                    <div class="col-6 card-line-height">
+                      <p class="title-ingredient">Kiwis</p>
+                      <p class="amount-ingredient">3</p>
+                    </div>
+                    <div class="col-6 card-line-height">
+                      <p class="title-ingredient">Mangue</p>
+                      <p class="amount-ingredient">1</p>
+                    </div>
+                    <div class="col-6 card-line-height">
+                      <p class="title-ingredient">Ananas</p>
+                      <p class="amount-ingredient">4</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <img
-                src="./public/assets/recipes/Recette01.jpg"
-                class="card-img recipes-img"
-                alt="..."
-              />
-              <div class="card-img-overlay">
-                <div class="d-flex justify-content-end">
-                  <span class="card-text card-time ps-2 pe-2 px-1 py-1 font-sm"
-                    >10min</span
-                  >
-                </div>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title mt-2 mb-4">Limonade de Coco</h5>
-                <p class="card-text card-recipe">RECETTE</p>
-                <p class="card-text">
-                  Mettre les glaçons à votre goût dans le blender, Ajouter le
-                  lait la crème de coco, le jus de 2 citrons et le sucre
-                  ensemble. Mixer jusqu'à obtenir la consistance désirée.
-                </p>
-                <p class="card-text card-ingredients">INGREDIENTS</p>
-                <div class="row gx-5 gy-2">
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <img
-                src="./public/assets/recipes/Recette01.jpg"
-                class="card-img recipes-img"
-                alt="..."
-              />
-              <div class="card-img-overlay">
-                <div class="d-flex justify-content-end">
-                  <span class="card-text card-time ps-2 pe-2 px-1 py-1 font-sm"
-                    >10min</span
-                  >
-                </div>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title mt-2 mb-4">Limonade de Coco</h5>
-                <p class="card-text card-recipe">RECETTE</p>
-                <p class="card-text">
-                  Mettre les glaçons à votre goût dans le blender, Ajouter le
-                  lait la crème de coco, le jus de 2 citrons et le sucre
-                  ensemble. Mixer jusqu'à obtenir la consistance désirée.
-                </p>
-                <p class="card-text card-ingredients">INGREDIENTS</p>
-                <div class="row gx-5 gy-2">
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                  <div class="col-6 card-line-height">
-                    <p class="title-ingredient">Lait de coco</p>
-                    <p class="amount-ingredient">400ml</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <img
-                src="./public/assets/recipes/Recette01.jpg"
-                class="card-img recipes-img"
-                alt="..."
-              />
-              <div class="card-img-overlay">
-                <p class="card-text">10min</p>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <img
-                src="./public/assets/recipes/Recette01.jpg"
-                class="card-img recipes-img"
-                alt="..."
-              />
-              <div class="card-img-overlay">
-                <p class="card-text">10min</p>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="card">
-              <img
-                src="./public/assets/recipes/Recette01.jpg"
-                class="card-img recipes-img"
-                alt="..."
-              />
-              <div class="card-img-overlay">
-                <p class="card-text">10min</p>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </main>
