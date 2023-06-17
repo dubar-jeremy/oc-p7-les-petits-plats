@@ -7,7 +7,7 @@ export function createCard(data: Recipes): HTMLElement {
   card.classList.add("card");
 
   const image = document.createElement("img");
-  image.src = "./public/assets/recipes/Recette01.jpg";
+  image.src = "/assets/recipes/Recette01.jpg";
   image.classList.add("card-img", "recipes-img");
   image.alt = "...";
 
