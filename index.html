@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Bootstrap demo</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200;300;400&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./public/style.css" />
+    </head>
+    <body>
+        <header class="position-relative">
+            <div class="position-absolute top-0 start-0 p-4">
+                <h1 class="text-white anton-font">Les petits plats</h1>
+            </div>
+            <img class="img-fluid w-100" src="./public/header.svg" alt="" />
+            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                <h2 class="mt-2 text-warning fw-bold font-md anton-font">
+                    CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+                </h2>
+                <form class="input-group align-items-center bg-white p-1" id="main-form">
+                    <input
+                        class="form-control main-search-form"
+                        type="search"
+                        name="main-search"
+                        placeholder="Rechercher une recette, un ingrédient"
+                        id="main-search"
+                    />
+                    <div class="input-group-append">
+                        <button
+                            class="btn btn-outline-secondary bg-dark rounded-4 border-0 border-start-0 border-bottom-0 border ms-n5 main-search-button"
+                            type="button"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="white"
+                                class="bi bi-search"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </header>
+         <main class="ps-5 pe-5">
+            <div class="filters container d-flex flex-wrap mt-4 md-flex-col">
+                <div class="d-flex flex-wrap justify-content-start w-75 md-w-100">
+                    <!-- ingredients -->
+                    <div class="ingredients md-w-100 md-mb-1">
+                        <div class="d-flex justify-content-around bg-white filters-container-btn border-rounded pe-3">
+                            <button class="collapsible-btn flex-grow-1">ingredients</button>
+                            <img alt="" class="arrow ingredients-icon" src="./public/Vector1.svg" />
+                        </div>
+                        <div class="ingredients-content content-inactive filter-inner-container bg-white">
+                            <form class="mt-2 mb-2">
+                                <div class="form-group d-flex border">
+                                    <input
+                                        type="text"
+                                        class="filter-search-form form-control border-0"
+                                        placeholder="Search"
+                                        id="ingredients-search"
+                                        name="ingredients"
+                                    />
+                                    <div class="input-group-append border-0">
+                                        <button class="btn ms-n5" type="button">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="grey"
+                                                class="bi bi-search"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <input class="main-search-form" type="submit" hidden />
+                            </form>
+                            <ul class="list-group ingredients-list-group overflow-auto">
+                                <!-- DATA FILTERS -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- appareil -->
+                    <div class="appareils md-w-100 md-mb-1">
+                        <div class="d-flex justify-content-around bg-white filters-container-btn border-rounded pe-3">
+                            <button class="collapsible-btn flex-grow-1">appareils</button>
+                            <img alt="" class="arrow appareils-icon" src="./public/Vector1.svg" />
+                        </div>
+                        <div class="appareils-content content-inactive filter-inner-container bg-white">
+                            <form class="mt-2 mb-2">
+                                <div class="form-group d-flex border">
+                                    <input
+                                        type="text"
+                                        class="filter-search-form form-control border-0"
+                                        placeholder="Search"
+                                        id="appareils-search"
+                                        name="appareils"
+                                    />
+                                    <div class="input-group-append border-0">
+                                        <button class="btn ms-n5" type="button">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="grey"
+                                                class="bi bi-search"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <input class="main-search-form" type="submit" hidden />
+                            </form>
+                            <ul class="list-group appareils-list-group overflow-auto">
+                                <!-- DATA FILTERS -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ustentiles -->
+                    <div class="ustentiles md-w-100 md-mb-1">
+                        <div class="d-flex justify-content-around bg-white filters-container-btn border-rounded pe-3">
+                            <button class="collapsible-btn flex-grow-1">ustentiles</button>
+                            <img alt="" class="arrow ustentiles-icon" src="./public/Vector1.svg" />
+                        </div>
+                        <div class="ustentiles-content filter-inner-container content-inactive bg-white">
+                            <form class="mt-2 mb-2">
+                                <div class="form-group d-flex border">
+                                    <input
+                                        type="text"
+                                        class="filter-search-form form-control border-0"
+                                        placeholder="Search"
+                                        id="ustentiles-search"
+                                        name="ustentiles"
+                                    />
+                                    <div class="input-group-append border-0">
+                                        <button class="btn ms-n5" type="button">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                fill="grey"
+                                                class="bi bi-search"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <input class="main-search-form" type="submit" hidden />
+                            </form>
+                            <ul class="list-group ustentiles-list-group overflow-auto">
+                                <!-- DATA FILTERS -->
+                            </ul>
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="w-25 md-w-100 mt-3">
+                    <p class="text-end fw-bold anton-font recipes-found">1500 recettes</p>
+                </div>
+                <div class="d-flex w-100 filter-items flex-wrap mt-4">
+                    <!-- FILTERED ITEMS -->
+                </div>
+              
+            </div>
+            <div class="container p-3 mt-3">
+                <div class="gx-5 gy-5 cards">
+                    <!-- CARD -->
+                </div>
+            </div>
+            <p class="error-message d-none">error</p>
+        </main>
+        <script type="module" src="scripts/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,241 @@
+body {
+  background: #ededed;
+  font-family: "Manrope", sans-serif;
+}
+
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* search bar */
+
+.main-search-form {
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+}
+
+.main-search-form:focus {
+  box-shadow: none;
+}
+
+.main-search-form::placeholder {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+}
+
+/* search inside filter */
+
+.filter-search-form {
+  border: 0;
+  outline: none;
+}
+
+.filter-search-form:focus {
+  box-shadow: none;
+}
+
+.filters-container-btn {
+  position: relative;
+}
+
+.filter-inner-container {
+  position: absolute;
+}
+
+.ingredients,
+.appareils,
+.ustentiles {
+  position: relative;
+  z-index: 1;
+  width: 20%;
+  margin-right: 5rem;
+  margin-left: 0.2rem;
+}
+
+.list-group {
+  max-height: 150px;
+}
+
+/* collapsible btn class */
+
+.collapsible-btn {
+  background: transparent;
+  color: rgb(24, 2, 2);
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.border-rounded {
+  border-radius: 0.5rem;
+}
+
+.collapsible:hover {
+  cursor: pointer;
+}
+
+.content-inactive {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.content-active {
+  padding: 0 18px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.icon-active {
+  transform: rotate(180deg);
+}
+
+/* bar wwith filter on top of the page */
+
+.arrow-filter {
+  width: 26px;
+  height: 26px;
+}
+.arrow-filter:hover {
+  cursor: pointer;
+}
+/* custom class */
+
+.w-90 {
+  width: 90%;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.font-md {
+  font-size: 2vw;
+}
+
+.manrope-font {
+  font-family: "Manrope", sans-serif;
+}
+
+.anton-font {
+  font-family: "Anton", sans-serif;
+}
+
+/* cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body-ingredients {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.recipes-img {
+  max-height: 280px;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.card-time {
+  font-size: 12px;
+  background: #ffd15b;
+  border-radius: 5px;
+}
+
+.card-title {
+  font-family: "Anton", sans-serif;
+  font-size: 18px;
+  min-height: 50px;
+}
+
+.card-text,
+.title-ingredient {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+}
+
+.amount-ingredient {
+  color: #7a7a7a;
+}
+
+.title-ingredient,
+.amount-ingredient {
+  margin-bottom: 0;
+}
+
+.amount-ingredient {
+  font-size: 12px;
+  font-family: "Manrope", sans-serif;
+}
+
+.card-line-height {
+  line-height: 1.2rem;
+}
+
+.card-recipe,
+.card-ingredients {
+  color: #7a7a7a;
+}
+
+
+.filter-items {
+  gap: 1em;
+}
+
+.card-description {
+  min-height: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
+/* media query for screen < 768px */
+@media (max-width: 1250px) {
+  .md-w-100 {
+    width: 100% !important;
+  }
+
+  .md-mb-1 {
+    margin-bottom: 1rem !important;
+  }
+
+  .filters-container-btn {
+    position: inherit;
+  }
+
+  .filter-inner-container {
+    position: inherit;
+  }
+
+  .ingredients,
+  .appareils,
+  .ustentiles {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
