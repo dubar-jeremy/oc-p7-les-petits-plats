@@ -6,10 +6,6 @@ import { compareRecipes } from "./compareRecipes.js"
  * It will return false if the recipe is not in the array
  */
 export function isRecipeDuplicate(recipe, recipes) {
-    for (let i = 0; i < recipes.length; i++) {
-        if (compareRecipes(recipe, recipes[i])) {
-            return true
-        }
-    }
-    return false
+    return recipes.some((otherRecipe) => otherRecipe.name === recipe.name);
 }
+

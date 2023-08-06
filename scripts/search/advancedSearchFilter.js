@@ -18,9 +18,9 @@ function advancedSearchFilter(event, filterType) {
 
     const arrows = document.querySelectorAll('.arrow-filter')
 
-    for (let i = 0; i < arrows.length; i++) {
-        arrows[i].addEventListener('click', (event) => removeFilter(event, filterType))
-    }
+    arrows.forEach(arrow => {
+        arrow.addEventListener('click', event => removeFilter(event, filterType));
+      });
 
     document.getElementById(`${filterType}-search`).value = ''
 }

@@ -1,8 +1,7 @@
 /**
- * You are in the branch "option-1"
- * It means all functions will be coded in a "traditional way"
- * It means all loop are cooded with for, while, do while loops
- * There is no includes, find, filter, map, reduce, etc.
+ * You are in the branch "option-B"
+ * It means all functions will be coded with functionnal programming
+ * It means all loop are cooded with map, filter, foreach, etc.
  */
 
 import { initDomElements } from './initDomElements.js'
@@ -31,23 +30,22 @@ ingredientsSearch?.addEventListener('input', advancedSearch)
 ustensilsSearch?.addEventListener('input', advancedSearch)
 appliancesSearch?.addEventListener('input', advancedSearch)
 
-
 /*
-* click on the filter item
-* User can click on the filter item to add it to the filters bar
-*/
+ * click on the filter item
+ * User can click on the filter item to add it to the filters bar
+ */
 const ingredientListIems = document.querySelectorAll(`.ingredients-list-group li`)
 const ustensilsListIems = document.querySelectorAll(`.ustentiles-list-group li`)
 const appliancesListIems = document.querySelectorAll(`.appareils-list-group li`)
 
-for (let i = 0; i < ingredientListIems.length; i++) {
-    ingredientListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'ingredients'))
-}
+ingredientListIems.forEach((item) => {
+    item.addEventListener('click', (event) => advancedSearchFilter(event, 'ingredients'))
+})
 
-for(let i = 0; i < ustensilsListIems.length; i++){
-    ustensilsListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'ustentiles'))
-}
+ustensilsListIems.forEach((item) => {
+    item.addEventListener('click', (event) => advancedSearchFilter(event, 'ustentiles'))
+})
 
-for (let i = 0; i < appliancesListIems.length; i++) {
-    appliancesListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'appareils'))
-}
+appliancesListIems.forEach((item) => {
+    item.addEventListener('click', (event) => advancedSearchFilter(event, 'appareils'))
+})

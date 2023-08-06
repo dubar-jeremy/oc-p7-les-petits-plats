@@ -21,14 +21,8 @@ function recipesFactory() {
      * This function will return a recipe by its name
      */
     function getRecipeByName(recipeName) {
-        const recipes = getRecipes()
-        for (let i = 0; i < recipes.length; i++) {
-            const recipe = recipes[i]
-            if (recipe.name === recipeName) {
-                return recipe
-            }
-        }
-        return null
+        const recipes = getRecipes();
+        return recipes.find((recipe) => recipe.name === recipeName) || null;
     }
 
     /**
@@ -70,75 +64,34 @@ function recipesFactory() {
      * It will display the number of recipes found
      */
     function createRecipes(recipes) {
-        clean(cardsContainer)
-
-        const uniqueRecipes = []
-
-        for (let i = 0; i < recipes.length; i++) {
-            const recipe = recipes[i]
-            let isDuplicate = false
-
-            for (let j = 0; j < uniqueRecipes.length; j++) {
-                if (uniqueRecipes[j].id === recipe.id) {
-                    isDuplicate = true
-                    break
-                }
-            }
-
-            if (!isDuplicate) {
-                uniqueRecipes.push(recipe)
-            }
-        }
-
-        for (let i = 0; i < uniqueRecipes.length; i++) {
-            const recipe = uniqueRecipes[i]
-            createRecipe(recipe)
-        }
-
-        displayNumberOfRecipes(uniqueRecipes.length.toString())
+        clean(cardsContainer);
+    
+        const uniqueRecipes = recipes.filter((recipe, index, recipes) => {
+            return recipes.findIndex((otherRecipe) => otherRecipe.id === recipe.id) === index;
+        });
+    
+        uniqueRecipes.forEach((recipe) => createRecipe(recipe));
+    
+        displayNumberOfRecipes(uniqueRecipes.length.toString());
     }
 
-    /**
-     * This function will filter recipes by the user input passed in parameter
-     * It will return an array of recipes found
-     * It might return an empty array if no recipe found
-     * It might return an array with duplicate recipes.
-     */
-    function filterRecipes(userInput) {
-        const filteredRecipes = []
 
-        for (let i = 0; i < recipes.length; i++) {
-            const recipe = recipes[i]
+    function filterRecipes(userInput) {
+        const filteredRecipes = recipes.filter((recipe) => {
             const recipeName = recipe.name.toLowerCase()
             const recipeDescription = recipe.description.toLowerCase()
-            const recipeIngredients = recipe.ingredients
+            const recipeIngredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
 
-            if (userInput.test(recipeName)) {
-                if (!isRecipeDuplicate(recipe, filteredRecipes)) {
-                    filteredRecipes.push(recipe)
-                }
-            }
+            return (
+                userInput.test(recipeName) ||
+                userInput.test(recipeDescription) ||
+                recipeIngredients.some((ingredient) => userInput.test(ingredient))
+            )
+        })
 
-            if (userInput.test(recipeDescription)) {
-                if (!isRecipeDuplicate(recipe, filteredRecipes)) {
-                    filteredRecipes.push(recipe)
-                }
-            }
-
-            let j = 0
-            while (j < recipeIngredients.length) {
-                const ingredient = recipeIngredients[j].ingredient.toLowerCase()
-                if (userInput.test(ingredient)) {
-                    if (!isRecipeDuplicate(recipe, filteredRecipes)) {
-                        filteredRecipes.push(recipe)
-                    }
-                    break
-                }
-                j++
-            }
-        }
-
-        return filteredRecipes
+        return filteredRecipes.filter((recipe, index, recipes) => {
+            return !recipes.slice(0, index).some((otherRecipe) => isRecipeDuplicate(recipe, [otherRecipe]))
+        })
     }
 
     return {

@@ -35,64 +35,62 @@ function filtersBarFactory() {
 
         
         let filteredRecipes = []
-        for (let i = 0; i < allRecipes.length; i++) {
-            const recipe = allRecipes[i]
-            let hasAllIngredients = true
 
-            for (let j = 0; j < clickedIngredientNames.length; j++) {
-                const clickedIngredientName = clickedIngredientNames[j]
+        allRecipes.forEach(recipe => {
+            let hasAllIngredients = true;
+        
+            clickedIngredientNames.forEach(clickedIngredientName => {
                 const hasIngredient = recipe.ingredients.some(
-                    (ingredient) => ingredient.ingredient.toLowerCase() === clickedIngredientName
-                )
-
+                    ingredient => ingredient.ingredient.toLowerCase() === clickedIngredientName
+                );
+        
                 if (!hasIngredient) {
-                    hasAllIngredients = false
-                    break
+                    hasAllIngredients = false;
+                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
                 }
-            }
-
+            });
+        
             if (hasAllIngredients) {
-                filteredRecipes.push(recipe)
+                filteredRecipes.push(recipe);
             }
-        }
+        });
+        
 
-        for (let i = 0; i < allRecipes.length; i++) {
-            const recipe = allRecipes[i]
-            let hasAllUstensils = true
-
-            for (let j = 0; j < clickedUstenstilNames.length; j++) {
-                const clickedUstensilName = clickedUstenstilNames[j]
-                const hasUstensil = recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === clickedUstensilName)
-
+        allRecipes.forEach(recipe => {
+            let hasAllUstensils = true;
+        
+            clickedUstenstilNames.forEach(clickedUstensilName => {
+                const hasUstensil = recipe.ustensils.some(ustensil => ustensil.toLowerCase() === clickedUstensilName);
+        
                 if (!hasUstensil) {
-                    hasAllUstensils = false
-                    break
+                    hasAllUstensils = false;
+                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
                 }
-            }
-
+            });
+        
             if (hasAllUstensils) {
-                filteredRecipes.push(recipe)
+                filteredRecipes.push(recipe);
             }
-        }
+        });
+        
 
-        for (let i = 0; i < allRecipes.length; i++) {
-            const recipe = allRecipes[i]
-            let hasAllAppliances = true
-
-            for (let j = 0; j < clickedApplianceNames.length; j++) {
-                const clickedApplianceName = clickedApplianceNames[j]
-                const hasAppliance = recipe.appliance.toLowerCase() === clickedApplianceName
-
+        allRecipes.forEach(recipe => {
+            let hasAllAppliances = true;
+        
+            clickedApplianceNames.forEach(clickedApplianceName => {
+                const hasAppliance = recipe.appliance.toLowerCase() === clickedApplianceName;
+        
                 if (!hasAppliance) {
-                    hasAllAppliances = false
-                    break
+                    hasAllAppliances = false;
+                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
                 }
-            }
-
+            });
+        
             if (hasAllAppliances) {
-                filteredRecipes.push(recipe)
+                filteredRecipes.push(recipe);
             }
-        }
+        });
+        
         if (filteredRecipes.length === 0) {
             recipeNotFound(
                 'Aucune recettes trouvée. Veuillez tenter une nouvelle recherche ou supprimer certains filtres'

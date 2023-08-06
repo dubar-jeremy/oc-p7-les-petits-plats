@@ -21,38 +21,36 @@ function filterFactory() {
         const list = content.querySelector(`${selector}-list-group`)
         const icon = document.querySelector(`${selector}-icon`)
 
-        for (let i = 0; i < data.length; i++) {
-            const id = data[i]
+        data.forEach((item) => {
+            const id = item
                 .replace(/'/g, '_')
                 .replace(/\s/g, '-')
                 .toLowerCase()
                 .replace(/[\u0300-\u036f]/g, '')
 
             list.innerHTML += `
-      <li class="list-group-item border-0" id=${id}>${data[i]}</li>
-    `
-        }
+        <li class="list-group-item border-0" id=${id}>${item}</li>
+        `
+        })
 
         element.addEventListener('click', () => {
-
-            if(input.value.length > 0){
+            if (input.value.length > 0) {
                 input.value = ''
             }
-            
+
             const allSelectors = ['.ingredients', '.appareils', '.ustentiles']
 
             // remove the current selector from the list
             const index = allSelectors.indexOf(selector)
             allSelectors.splice(index, 1)
 
-            for (let i = 0; i < allSelectors.length; i++) {
-                const selector = allSelectors[i]
+            allSelectors.forEach((selector) => {
                 const content = document.querySelector(`${selector}-content`)
                 const icon = document.querySelector(`${selector}-icon`)
                 content.classList.remove('content-active')
                 content.classList.add('content-inactive')
                 icon.classList.remove('icon-active')
-            }
+            })
 
             content.classList.toggle('content-active')
             content.classList.toggle('content-inactive')
@@ -71,9 +69,10 @@ function filterFactory() {
         const displayedElements = document.querySelectorAll(`${selector}-list-group li:not(.d-none)`)
 
         const newListElements = []
-        for (let i = 0; i < displayedElements.length; i++) {
-            newListElements.push(displayedElements[i].textContent)
-        }
+
+        displayedElements.forEach((element) => {
+            newListElements.push(element.textContent)
+        })
 
         return newListElements
     }
@@ -91,34 +90,32 @@ function filterFactory() {
      */
     function hideItemsNotInList(list) {
         const listItems = document.querySelectorAll(`.${list}-list-group li`)
-        for (let i = 0; i < listItems.length; i++) {
-            if (!listItems[i].hasAttribute('display')) {
-                listItems[i].remove();
+
+        listItems.forEach((item) => {
+            if (!item.hasAttribute('display')) {
+                item.remove()
             }
-        }
+        })
     }
 
     /**
      * Filter an array of ingredients and set the 'display' attribute for each one.
      */
     function getRemainsIngredients(ingredients) {
-        for (let j = 0; j < ingredients.length; j++) {
-
-            const ingredient = ingredients[j].ingredient
-            const ingredientElement = document.querySelector(`#${getElementId(ingredient)}`)
+        ingredients.forEach((ingredient) => {
+            const ingredientElement = document.querySelector(`#${getElementId(ingredient.ingredient)}`)
             ingredientElement.setAttribute('display', 'true')
-        }
+        })
     }
 
     /**
      * Filter an array of utensils and set the 'display' attribute for each one.
      */
     function getRemainsUstensils(ustensils) {
-        for (let j = 0; j < ustensils.length; j++) {
-            const ustensil = ustensils[j]
+        ustensils.forEach((ustensil) => {
             const ustensilElement = document.querySelector(`#${getElementId(ustensil)}`)
             ustensilElement.setAttribute('display', 'true')
-        }
+        })
     }
 
     /**
@@ -133,40 +130,39 @@ function filterFactory() {
      * Then, hide ingredients, utensils, and appliances not in the list.
      */
     function displayRemainingFilters(filteredRecipes) {
-
-        for (let i = 0; i < filteredRecipes.length; i++) {
-            const ingredients = filteredRecipes[i].ingredients
-            const appliance = filteredRecipes[i].appliance
-            const utensils = filteredRecipes[i].ustensils
+        filteredRecipes.forEach((recipe) => {
+            const ingredients = recipe.ingredients
+            const appliance = recipe.appliance
+            const utensils = recipe.ustensils
             getRemainsIngredients(ingredients)
             getRemainsAppliances(appliance)
             getRemainsUstensils(utensils)
-        }
+        })
 
         hideItemsNotInList('ingredients')
         hideItemsNotInList('appliances')
         hideItemsNotInList('utensils')
     }
 
-    function createAdvancedFilter(value){
-        const filterItems = document.querySelector(".filter-items");
+    function createAdvancedFilter(value) {
+        const filterItems = document.querySelector('.filter-items')
 
-        const filterItem = document.createElement("div");
-        filterItem.classList.add("bg-warning", "p-2", "me-2", "rounded", "rounded-4");
-        filterItems.appendChild(filterItem);
-      
+        const filterItem = document.createElement('div')
+        filterItem.classList.add('bg-warning', 'p-2', 'me-2', 'rounded', 'rounded-4')
+        filterItems.appendChild(filterItem)
+
         // add span inside filterItem
-        const span = document.createElement("span");
-        span.classList.add("pe-5", "filter-text");
-        span.textContent = value;
-        filterItem.appendChild(span);
-      
+        const span = document.createElement('span')
+        span.classList.add('pe-5', 'filter-text')
+        span.textContent = value
+        filterItem.appendChild(span)
+
         // add image inside filterItem
-        const image = document.createElement("img");
-        image.src = "./public/arrow.svg";
-        image.classList.add("arrow-filter");
-        image.alt = "...";
-        filterItem.appendChild(image);
+        const image = document.createElement('img')
+        image.src = './public/arrow.svg'
+        image.classList.add('arrow-filter')
+        image.alt = '...'
+        filterItem.appendChild(image)
     }
 
     return {

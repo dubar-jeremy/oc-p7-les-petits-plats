@@ -1,46 +1,44 @@
-/**
- * This function returns an array of filters with the data passed in parameter
- * It takes an array of recipes in parameter
- * It returns an object with 3 arrays: ingredients, appareils, ustensils
- */
 export function getFilters(recipes) {
-
     const filters = {
-        ingredients: [],
-        appareils: [],
-        ustensils: [],
-    }
-
-    for (let i = 0; i < recipes.length; i++) {
-        for (let j = 0; j < recipes[i].ingredients.length; j++) {
-            if (recipes[i].ingredients[j].ingredient) {
-                const ingredient = recipes[i].ingredients[j]?.ingredient?.toLowerCase()
-                if (!filters.ingredients.includes(ingredient)) {
-                    filters.ingredients.push(ingredient)
-                }
-            }
+      ingredients: [],
+      appareils: [],
+      ustensils: [],
+    };
+  
+    // Get unique ingredients
+    recipes.forEach(recipe => {
+      recipe.ingredients.forEach(ingredientObj => {
+        if (ingredientObj.ingredient) {
+          const ingredient = ingredientObj.ingredient.toLowerCase();
+          if (!filters.ingredients.includes(ingredient)) {
+            filters.ingredients.push(ingredient);
+          }
         }
-    }
-
-    for (let i = 0; i < recipes.length; i++) {
-        if (recipes[i].appliance) {
-            const appliance = recipes[i].appliance?.toLowerCase()
-            if (!filters.appareils.includes(appliance)) {
-                filters.appareils.push(appliance)
-            }
+      });
+    });
+  
+    // Get unique appliances
+    recipes.forEach(recipe => {
+      if (recipe.appliance) {
+        const appliance = recipe.appliance.toLowerCase();
+        if (!filters.appareils.includes(appliance)) {
+          filters.appareils.push(appliance);
         }
-    }
-
-    for (let i = 0; i < recipes.length; i++) {
-        for (let j = 0; j < recipes[i].ustensils.length; j++) {
-            if (recipes[i].ustensils[j]) {
-                const ustensil = recipes[i].ustensils[j]?.toLowerCase()
-                if (!filters.ustensils.includes(ustensil)) {
-                    filters.ustensils.push(ustensil)
-                }
-            }
+      }
+    });
+  
+    // Get unique ustensils
+    recipes.forEach(recipe => {
+      recipe.ustensils.forEach(ustensil => {
+        if (ustensil) {
+          const lowerCasedUstensil = ustensil.toLowerCase();
+          if (!filters.ustensils.includes(lowerCasedUstensil)) {
+            filters.ustensils.push(lowerCasedUstensil);
+          }
         }
-    }
-
-    return filters
-}
+      });
+    });
+  
+    return filters;
+  }
+  
