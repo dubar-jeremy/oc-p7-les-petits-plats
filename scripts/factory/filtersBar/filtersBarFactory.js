@@ -8,89 +8,82 @@ function filtersBarFactory() {
 
     function initializeRecipes() {
         const cardsTitle = document.querySelectorAll('.card-title-recipe')
-        for (let i = 0; i < cardsTitle.length; i++) {
-            const recipeName = cardsTitle[i].innerHTML
+
+        cardsTitle.forEach((cardTitle) => {
+            const recipeName = cardTitle.innerHTML
             const recipe = getRecipeByName(recipeName)
             allRecipes.push(recipe)
-        }
+        })
     }
 
     function applyFilters(filterType) {
-        let clickedIngredientNames = [];
-        let clickedUstenstilNames = [];
-        let clickedApplianceNames = [];
-        
-        const clickedElements = document.querySelectorAll(`.${filterType}-list-group .clicked`);
-        
-        for (let i = 0; i < clickedElements.length; i++) {
-          const ingredient = clickedElements[i];
-          clickedIngredientNames.push(ingredient.innerHTML.toLowerCase());
-        
-          const ustensil = clickedElements[i];
-          clickedUstenstilNames.push(ustensil.innerHTML.toLowerCase());
-        
-          const appliance = clickedElements[i];
-          clickedApplianceNames.push(appliance.innerHTML.toLowerCase());
-        }
+        let clickedIngredientNames = []
+        let clickedUstenstilNames = []
+        let clickedApplianceNames = []
 
-        
+        const clickedElements = document.querySelectorAll(`.${filterType}-list-group .clicked`)
+
+        clickedElements.forEach((clickedElement) => {
+            clickedApplianceNames.push(clickedElement.innerHTML.toLowerCase())
+            clickedUstenstilNames.push(clickedElement.innerHTML.toLowerCase())
+            clickedIngredientNames.push(clickedElement.innerHTML.toLowerCase())
+        })
+
         let filteredRecipes = []
 
-        allRecipes.forEach(recipe => {
-            let hasAllIngredients = true;
-        
-            clickedIngredientNames.forEach(clickedIngredientName => {
+        allRecipes.forEach((recipe) => {
+            let hasAllIngredients = true
+
+            clickedIngredientNames.forEach((clickedIngredientName) => {
                 const hasIngredient = recipe.ingredients.some(
-                    ingredient => ingredient.ingredient.toLowerCase() === clickedIngredientName
-                );
-        
+                    (ingredient) => ingredient.ingredient.toLowerCase() === clickedIngredientName
+                )
+
                 if (!hasIngredient) {
-                    hasAllIngredients = false;
-                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
+                    hasAllIngredients = false
+                    return // On peut utiliser 'return' pour sortir de la boucle forEach
                 }
-            });
-        
+            })
+
             if (hasAllIngredients) {
-                filteredRecipes.push(recipe);
+                filteredRecipes.push(recipe)
             }
-        });
-        
+        })
 
-        allRecipes.forEach(recipe => {
-            let hasAllUstensils = true;
-        
-            clickedUstenstilNames.forEach(clickedUstensilName => {
-                const hasUstensil = recipe.ustensils.some(ustensil => ustensil.toLowerCase() === clickedUstensilName);
-        
+        allRecipes.forEach((recipe) => {
+            let hasAllUstensils = true
+
+            clickedUstenstilNames.forEach((clickedUstensilName) => {
+                const hasUstensil = recipe.ustensils.some((ustensil) => ustensil.toLowerCase() === clickedUstensilName)
+
                 if (!hasUstensil) {
-                    hasAllUstensils = false;
-                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
+                    hasAllUstensils = false
+                    return // On peut utiliser 'return' pour sortir de la boucle forEach
                 }
-            });
-        
-            if (hasAllUstensils) {
-                filteredRecipes.push(recipe);
-            }
-        });
-        
+            })
 
-        allRecipes.forEach(recipe => {
-            let hasAllAppliances = true;
-        
-            clickedApplianceNames.forEach(clickedApplianceName => {
-                const hasAppliance = recipe.appliance.toLowerCase() === clickedApplianceName;
-        
-                if (!hasAppliance) {
-                    hasAllAppliances = false;
-                    return; // On peut utiliser 'return' pour sortir de la boucle forEach
-                }
-            });
-        
-            if (hasAllAppliances) {
-                filteredRecipes.push(recipe);
+            if (hasAllUstensils) {
+                filteredRecipes.push(recipe)
             }
-        });
-        
+        })
+
+        allRecipes.forEach((recipe) => {
+            let hasAllAppliances = true
+
+            clickedApplianceNames.forEach((clickedApplianceName) => {
+                const hasAppliance = recipe.appliance.toLowerCase() === clickedApplianceName
+
+                if (!hasAppliance) {
+                    hasAllAppliances = false
+                    return // On peut utiliser 'return' pour sortir de la boucle forEach
+                }
+            })
+
+            if (hasAllAppliances) {
+                filteredRecipes.push(recipe)
+            }
+        })
+
         if (filteredRecipes.length === 0) {
             recipeNotFound(
                 'Aucune recettes trouvée. Veuillez tenter une nouvelle recherche ou supprimer certains filtres'
