@@ -17,18 +17,6 @@ function advancedSearch(e) {
         item.classList.remove('d-none');
       }
     });
-  
-    // Add click event listener
-    originalList.forEach((item, i) => {
-      item.addEventListener('click', function () {
-        // Remove the 'd-none' class from other non-clicked elements
-        originalList.forEach((item, j) => {
-          if (j !== i) {
-            item.classList.remove('d-none');
-          }
-        });
-      });
-    });
   }
   
   export { advancedSearch };
