@@ -130,7 +130,6 @@ function filterFactory() {
      * Then, hide ingredients, utensils, and appliances not in the list.
      */
     function displayRemainingFilters(filteredRecipes, recreate = false) {
-
         filteredRecipes.forEach((recipe) => {
             const ingredients = recipe.ingredients
             const appliance = recipe.appliance
@@ -167,24 +166,22 @@ function filterFactory() {
     }
 
     function displayRemainingOnClick(selector, remaining) {
-        const list =  document.querySelectorAll(`.${selector}-list-group li`);
-        // remove all li 
-         list.forEach((item) => {
-             item.classList.add('d-none')
-         }
-         )
-     
-         // display only the remaining 
-         remaining.forEach((item) => {
-             const id = getElementId(item)
-             const li = document.querySelector(`#${id}`)
-             // remove only for those that don't have attribute "hasbeenclicked"
-             if (!li.hasAttribute('havebeenclicked')) {
-             li.classList.remove('d-none')
-             }
-         }
-         )
-     }
+        const list = document.querySelectorAll(`.${selector}-list-group li`)
+        // remove all li
+        list.forEach((item) => {
+            item.classList.add('d-none')
+        })
+
+        // display only the remaining
+        remaining.forEach((item) => {
+            const id = getElementId(item)
+            const li = document.querySelector(`#${id}`)
+            // remove only for those that don't have attribute "hasbeenclicked"
+            if (!li.hasAttribute('havebeenclicked')) {
+                li.classList.remove('d-none')
+            }
+        })
+    }
 
     return {
         displayRemainingFilters,
@@ -192,7 +189,7 @@ function filterFactory() {
         createFilters,
         createFilter,
         createAdvancedFilter,
-        displayRemainingOnClick
+        displayRemainingOnClick,
     }
 }
 
