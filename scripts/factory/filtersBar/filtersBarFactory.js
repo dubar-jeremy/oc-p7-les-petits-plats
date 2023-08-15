@@ -1,10 +1,13 @@
+import { filterFactory } from '../filters/filtersFactory.js'
 import { getElementId } from '../filters/helper/getElementId.js'
 import { recipesFactory } from '../recipes/recipesFactory.js'
+
 
 function filtersBarFactory() {
     let allRecipes = []
 
     const { createRecipes, getRecipeByName, recipeNotFound } = recipesFactory()
+    const { displayRemainingFilters, createFilter } = filterFactory();
 
     function initializeRecipes() {
         const cardsTitle = document.querySelectorAll('.card-title-recipe')
@@ -91,7 +94,23 @@ function filtersBarFactory() {
             return
         }
 
+        let newListIngredients = [];
+        let newListAppliances = [];
+        let newListUstensils = [];
+        filteredRecipes.forEach((recipe) => {
+          recipe.ingredients.forEach((ingredient) => {
+            newListIngredients.push(ingredient.ingredient);
+          });
+            newListAppliances.push(recipe.appliance);
+
+            recipe.ustensils.forEach((ustensil) => {
+                newListUstensils.push(ustensil);
+            });
+        })
+
         createRecipes(filteredRecipes)
+
+        return {newListIngredients, newListAppliances, newListUstensils};
     }
 
     function removeFilter(event, filterType) {

@@ -12,7 +12,7 @@ function advancedSearchFilter(event, filterType) {
     event.target.classList.add('d-none')
     event.target.setAttribute('haveBeenClicked', 'true')    
 
-    applyFilters(filterType)
+    const {newListIngredients, newListAppliances, newListUstensils} = applyFilters(filterType)
 
     createAdvancedFilter(event.target.innerHTML)
 
@@ -23,6 +23,8 @@ function advancedSearchFilter(event, filterType) {
       });
 
     document.getElementById(`${filterType}-search`).value = ''
+
+    return {newListIngredients, newListAppliances, newListUstensils};
 }
 
 export { advancedSearchFilter }

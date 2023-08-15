@@ -4,6 +4,7 @@
  * It means all loop are cooded with map, filter, foreach, etc.
  */
 
+import { filterFactory } from './factory/filters/filtersFactory.js'
 import { initDomElements } from './initDomElements.js'
 import { advancedSearch } from './search/advancedSearch.js'
 import { advancedSearchFilter } from './search/advancedSearchFilter.js'
@@ -15,6 +16,8 @@ const mainSearchBtn = document.querySelector('.main-search-button')
 const ingredientsSearch = document.querySelector('#ingredients-search')
 const ustensilsSearch = document.querySelector('#ustentiles-search')
 const appliancesSearch = document.querySelector('#appareils-search')
+
+const { displayRemainingOnClick } = filterFactory();
 
 /*
  * Basic search
@@ -38,14 +41,34 @@ const ingredientListIems = document.querySelectorAll(`.ingredients-list-group li
 const ustensilsListIems = document.querySelectorAll(`.ustentiles-list-group li`)
 const appliancesListIems = document.querySelectorAll(`.appareils-list-group li`)
 
+
 ingredientListIems.forEach((item) => {
-    item.addEventListener('click', (event) => advancedSearchFilter(event, 'ingredients'))
+    item.addEventListener('click', (event) => { 
+       const {newListIngredients, newListUstensils, newListAppliances} = advancedSearchFilter(event, 'ingredients')
+       displayRemainingOnClick('appareils', newListAppliances)
+       displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+
+    })
 })
 
 ustensilsListIems.forEach((item) => {
-    item.addEventListener('click', (event) => advancedSearchFilter(event, 'ustentiles'))
+    item.addEventListener('click', (event) => {
+        const {newListIngredients, newListUstensils, newListAppliances} = advancedSearchFilter(event, 'ustentiles')
+        displayRemainingOnClick('appareils', newListAppliances)
+        displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+
+    })
 })
 
 appliancesListIems.forEach((item) => {
-    item.addEventListener('click', (event) => advancedSearchFilter(event, 'appareils'))
+    item.addEventListener('click', (event) => {
+        const {newListIngredients, newListUstensils, newListAppliances} = advancedSearchFilter(event, 'appareils')
+        displayRemainingOnClick('appareils', newListAppliances)
+        displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+
+
+    })
 })
