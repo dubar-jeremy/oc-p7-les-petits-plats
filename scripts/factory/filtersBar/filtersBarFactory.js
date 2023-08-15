@@ -16,24 +16,23 @@ function filtersBarFactory() {
     }
 
     function applyFilters(filterType) {
-        let clickedIngredientNames = [];
-        let clickedUstenstilNames = [];
-        let clickedApplianceNames = [];
-        
-        const clickedElements = document.querySelectorAll(`.${filterType}-list-group .clicked`);
-        
+        let clickedIngredientNames = []
+        let clickedUstenstilNames = []
+        let clickedApplianceNames = []
+
+        const clickedElements = document.querySelectorAll(`.${filterType}-list-group .clicked`)
+
         for (let i = 0; i < clickedElements.length; i++) {
-          const ingredient = clickedElements[i];
-          clickedIngredientNames.push(ingredient.innerHTML.toLowerCase());
-        
-          const ustensil = clickedElements[i];
-          clickedUstenstilNames.push(ustensil.innerHTML.toLowerCase());
-        
-          const appliance = clickedElements[i];
-          clickedApplianceNames.push(appliance.innerHTML.toLowerCase());
+            const ingredient = clickedElements[i]
+            clickedIngredientNames.push(ingredient.innerHTML.toLowerCase())
+
+            const ustensil = clickedElements[i]
+            clickedUstenstilNames.push(ustensil.innerHTML.toLowerCase())
+
+            const appliance = clickedElements[i]
+            clickedApplianceNames.push(appliance.innerHTML.toLowerCase())
         }
 
-        
         let filteredRecipes = []
         for (let i = 0; i < allRecipes.length; i++) {
             const recipe = allRecipes[i]
@@ -100,7 +99,29 @@ function filtersBarFactory() {
             return
         }
 
+        let newListIngredients = []
+        let newListAppliances = []
+        let newListUstensils = []
+
+        for (let i = 0; i < filteredRecipes.length; i++) {
+            const recipe = filteredRecipes[i]
+
+            for (let j = 0; j < recipe.ingredients.length; j++) {
+                const ingredient = recipe.ingredients[j].ingredient
+                newListIngredients.push(ingredient)
+            }
+
+            newListAppliances.push(recipe.appliance)
+
+            for (let j = 0; j < recipe.ustensils.length; j++) {
+                const ustensil = recipe.ustensils[j]
+                newListUstensils.push(ustensil)
+            }
+        }
+
         createRecipes(filteredRecipes)
+
+        return { newListIngredients, newListAppliances, newListUstensils }
     }
 
     function removeFilter(event, filterType) {
