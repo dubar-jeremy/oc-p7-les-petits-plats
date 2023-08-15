@@ -5,6 +5,7 @@
  * There is no includes, find, filter, map, reduce, etc.
  */
 
+import { filterFactory } from './factory/filters/filtersFactory.js'
 import { initDomElements } from './initDomElements.js'
 import { advancedSearch } from './search/advancedSearch.js'
 import { advancedSearchFilter } from './search/advancedSearchFilter.js'
@@ -16,6 +17,8 @@ const mainSearchBtn = document.querySelector('.main-search-button')
 const ingredientsSearch = document.querySelector('#ingredients-search')
 const ustensilsSearch = document.querySelector('#ustentiles-search')
 const appliancesSearch = document.querySelector('#appareils-search')
+
+const { displayRemainingOnClick } = filterFactory()
 
 /*
  * Basic search
@@ -31,23 +34,37 @@ ingredientsSearch?.addEventListener('input', advancedSearch)
 ustensilsSearch?.addEventListener('input', advancedSearch)
 appliancesSearch?.addEventListener('input', advancedSearch)
 
-
 /*
-* click on the filter item
-* User can click on the filter item to add it to the filters bar
-*/
+ * click on the filter item
+ * User can click on the filter item to add it to the filters bar
+ */
 const ingredientListIems = document.querySelectorAll(`.ingredients-list-group li`)
 const ustensilsListIems = document.querySelectorAll(`.ustentiles-list-group li`)
 const appliancesListIems = document.querySelectorAll(`.appareils-list-group li`)
 
 for (let i = 0; i < ingredientListIems.length; i++) {
-    ingredientListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'ingredients'))
+    ingredientListIems[i].addEventListener('click', (event) => {
+        const { newListAppliances, newListIngredients, newListUstensils } = advancedSearchFilter(event, 'ingredients')
+        displayRemainingOnClick('appareils', newListAppliances)
+        displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+    })
 }
 
-for(let i = 0; i < ustensilsListIems.length; i++){
-    ustensilsListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'ustentiles'))
+for (let i = 0; i < ustensilsListIems.length; i++) {
+    ustensilsListIems[i].addEventListener('click', (event) => {
+        const { newListAppliances, newListIngredients, newListUstensils } = advancedSearchFilter(event, 'ustentiles')
+        displayRemainingOnClick('appareils', newListAppliances)
+        displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+    })
 }
 
 for (let i = 0; i < appliancesListIems.length; i++) {
-    appliancesListIems[i].addEventListener('click', (event) => advancedSearchFilter(event, 'appareils'))
+    appliancesListIems[i].addEventListener('click', (event) => {
+        const { newListAppliances, newListIngredients, newListUstensils } = advancedSearchFilter(event, 'appareils')
+        displayRemainingOnClick('appareils', newListAppliances)
+        displayRemainingOnClick('ingredients', newListIngredients)
+        displayRemainingOnClick('ustentiles', newListUstensils)
+    })
 }
