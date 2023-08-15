@@ -22,16 +22,5 @@ function advancedSearch(e) {
             originalList[i].classList.remove('d-none')
         }
     }
-
-    for (let i = 0; i < originalList.length; i++) {
-        originalList[i].addEventListener('click', function() {            
-            // Supprimer la classe 'd-none' des autres éléments non cliqués
-            for (let j = 0; j < originalList.length; j++) {
-                if (j !== i) {
-                    originalList[j].classList.remove('d-none');
-                }
-            }
-        });
-    }
 }
 export { advancedSearch }
