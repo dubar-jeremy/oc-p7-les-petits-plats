@@ -169,12 +169,36 @@ function filterFactory() {
         filterItem.appendChild(image);
     }
 
+    function displayRemainingOnClick(selector, remaining) {
+        const list = document.querySelectorAll(`.${selector}-list-group li`);
+    
+        // Remove all li
+        for (let i = 0; i < list.length; i++) {
+            const item = list[i];
+            item.classList.add('d-none');
+        }
+    
+        // Display only the remaining
+        for (let i = 0; i < remaining.length; i++) {
+            const item = remaining[i];
+            const id = getElementId(item);
+            const li = document.querySelector(`#${id}`);
+    
+            // Remove only for those that don't have attribute "havebeenclicked"
+            if (!li.hasAttribute('havebeenclicked')) {
+                li.classList.remove('d-none');
+            }
+        }
+    }
+    
+
     return {
         displayRemainingFilters,
         getFilterItems,
         createFilters,
         createFilter,
         createAdvancedFilter,
+        displayRemainingOnClick
     }
 }
 
