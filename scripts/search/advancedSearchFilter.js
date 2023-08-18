@@ -1,9 +1,9 @@
-import { filterFactory } from '../factory/filters/filtersFactory.js'
-import { filtersBarFactory } from '../factory/filtersBar/filtersBarFactory.js'
+import { filterManager } from '../Manager/filters/filtersManager.js'
+import { filtersBarManager } from '../Manager/filtersBar/filtersBarManager.js'
 
 function advancedSearchFilter(event, filterType) {
-    const { initializeRecipes, applyFilters, removeFilter } = filtersBarFactory()
-    const { createAdvancedFilter } = filterFactory()
+    const { initializeRecipes, applyFilters, removeFilter } = filtersBarManager()
+    const { createAdvancedFilter } = filterManager()
 
     initializeRecipes()
 

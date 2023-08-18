@@ -1,5 +1,5 @@
-import { filterFactory } from '../factory/filters/filtersFactory.js'
-import { recipesFactory } from '../factory/recipes/recipesFactory.js'
+import { filterManager } from '../Manager/filters/filtersManager.js'
+import { recipesManager } from '../Manager/recipes/recipesManager.js'
 
 /**
  * This function is called when the user click on the search button
@@ -9,9 +9,9 @@ import { recipesFactory } from '../factory/recipes/recipesFactory.js'
  * If there is less than 3 characters in the search input, it will do nothing
  */
 export function searchRecipes() {
-    const { recipeNotFound, createRecipes, filterRecipes } = recipesFactory()
+    const { recipeNotFound, createRecipes, filterRecipes } = recipesManager()
 
-    const { displayRemainingFilters } = filterFactory()
+    const { displayRemainingFilters } = filterManager()
 
     const mainForm = document.querySelector('#main-form')
 
