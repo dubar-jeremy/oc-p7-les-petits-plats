@@ -6,7 +6,7 @@ import { isRecipeDuplicate } from './helper/isRecipeDuplicate.js'
 /**
  * The recipes factory is used to create and manage recipes
  */
-function recipesFactory() {
+function recipesManager() {
     const cardsContainer = document.querySelector('.cards')
     const recipesFound = document.querySelector('.recipes-found')
 
@@ -152,4 +152,4 @@ function recipesFactory() {
     }
 }
 
-export { recipesFactory }
+export { recipesManager }

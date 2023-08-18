@@ -1,10 +1,10 @@
 import { getElementId } from '../filters/helper/getElementId.js'
-import { recipesFactory } from '../recipes/recipesFactory.js'
+import { recipesManager } from '../recipes/recipesManager.js'
 
-function filtersBarFactory() {
+function filtersBarManager() {
     let allRecipes = []
 
-    const { createRecipes, getRecipeByName, recipeNotFound } = recipesFactory()
+    const { createRecipes, getRecipeByName, recipeNotFound } = recipesManager()
 
     function initializeRecipes() {
         const cardsTitle = document.querySelectorAll('.card-title-recipe')
@@ -151,4 +151,4 @@ function filtersBarFactory() {
     }
 }
 
-export { filtersBarFactory }
+export { filtersBarManager }

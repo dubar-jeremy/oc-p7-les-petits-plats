@@ -5,7 +5,7 @@
  * There is no includes, find, filter, map, reduce, etc.
  */
 
-import { filterFactory } from './factory/filters/filtersFactory.js'
+import { filterManager} from './manager/filters/filtersManager.js'
 import { initDomElements } from './initDomElements.js'
 import { advancedSearch } from './search/advancedSearch.js'
 import { advancedSearchFilter } from './search/advancedSearchFilter.js'
@@ -18,7 +18,7 @@ const ingredientsSearch = document.querySelector('#ingredients-search')
 const ustensilsSearch = document.querySelector('#ustentiles-search')
 const appliancesSearch = document.querySelector('#appareils-search')
 
-const { displayRemainingOnClick } = filterFactory()
+const { displayRemainingOnClick } = filterManager()
 
 /*
  * Basic search

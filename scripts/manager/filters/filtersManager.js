@@ -1,9 +1,9 @@
-import { recipesFactory } from '../recipes/recipesFactory.js'
+import { recipesManager } from '../recipes/recipesManager.js'
 import { getElementId } from './helper/getElementId.js'
 import { getFilters } from './helper/getFilters.js'
 
-function filterFactory() {
-    const { getRecipes } = recipesFactory()
+function filterManager() {
+    const { getRecipes } = recipesManager()
 
     /**
      * get the filters from the data
@@ -202,4 +202,4 @@ function filterFactory() {
     }
 }
 
-export { filterFactory }
+export { filterManager }
